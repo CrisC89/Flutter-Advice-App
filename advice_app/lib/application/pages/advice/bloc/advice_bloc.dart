@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:advice_app/domain/entities/advice.entity.dart';
+import 'package:advice_app/domain/usecases/advice.usecases.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +12,12 @@ part 'advice_state.dart';
 
 class AdviceBloc extends Bloc<AdviceEvent, AdviceState> {
   AdviceBloc() : super(AdviceInitial()) {
-   on<AdviceRequestedEvent>((event, emit) async {
+    final AdviceUseCases adviceUseCases = new AdviceUseCases();
+
+    on<AdviceRequestedEvent>((event, emit) async {
       emit(AdviceStateLoading());
-      //execute business logic
-     // for example get and advice
-     debugPrint('Fake Advice triggered');
-     await Future.delayed(const Duration(seconds: 3), (){});
-      debugPrint('Got advice');
-      emit(AdviceStateLoaded(advice: 'Fake advice to test bloc'));
+      final AdviceEntity advice = await adviceUseCases.getAdvice();
+      emit(AdviceStateLoaded(advice: advice.advice));
       //emit(AdviceStateError(message: 'Fake error message'));
    });
   }
