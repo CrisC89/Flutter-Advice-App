@@ -1,5 +1,7 @@
+import 'package:advice_app/application/pages/advice/bloc/advice_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BasicCustomButton extends StatelessWidget{
   const BasicCustomButton({super.key});
@@ -9,7 +11,7 @@ class BasicCustomButton extends StatelessWidget{
     final theme = Theme.of(context);
     return InkResponse(
       onTap: (){
-        print('Button pressed - will be implemented later');
+        BlocProvider.of<AdviceBloc>(context).add(AdviceRequestedEvent());
       },
       child: Material(
         elevation: 20,
