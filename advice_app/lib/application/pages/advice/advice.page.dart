@@ -3,6 +3,7 @@ import 'package:advice_app/application/pages/advice/bloc/advice_bloc.dart';
 import 'package:advice_app/application/pages/advice/widgets/advice-field.widget.dart';
 import 'package:advice_app/application/pages/advice/widgets/basic-custom-button.widget.dart';
 import 'package:advice_app/application/pages/advice/widgets/error-message.widget.dart';
+import 'package:advice_app/dependency-injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,7 @@ class AdvicePageWrapperProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AdviceBloc(),
+      create: (context) => sl<AdviceBloc>(),
       child: const AdvicePage(),
     );
   }
