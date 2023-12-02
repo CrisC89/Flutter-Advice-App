@@ -7,12 +7,14 @@ import 'dependency-injection.dart' as di;
 import 'application/core/services/theme.service.dart';
 
 void main() async {
+  print("main");
   WidgetsFlutterBinding.ensureInitialized();
   await di.init();
   runApp(ChangeNotifierProvider(
     create: (context) => ThemeService(),
     child: const MyApp(),
   ));
+  print("main end");
 }
 
 class MyApp extends StatelessWidget {

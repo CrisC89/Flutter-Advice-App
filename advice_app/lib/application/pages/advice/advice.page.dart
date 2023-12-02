@@ -14,6 +14,7 @@ class AdvicePageWrapperProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Page wapper");
     return BlocProvider(
       create: (context) => sl<AdviceBloc>(),
       child: const AdvicePage(),
@@ -26,6 +27,7 @@ class AdvicePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Page");
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
